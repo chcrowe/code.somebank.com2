@@ -1,0 +1,221 @@
+SOMEBANK Host Components:
+
+Chris - waiting on the list of endpoints from Rohit
+
+ls1.networkgls.com - used to get the SOMEBANK endpoints (i.e. Processing, Software, Keys, Direct, Logging), returned as encrypted XML
+pos.somebank.com - the SOMEBANK Processing Gateway
+
+EtsCoreHandler - Manages a database with a table that contains the SecureVault255Core, and SecureVault30Core binaries, and a table containing the mapping of a specific binary to a ClientId/TerminalId.
+EtsDirectHandler - This web handler processes direct Host requests (i.e. POSitouch), and acts as a decision gateway to route direct processing transactions.
+EtsLogHandler - Receives and records log messages in a database.
+
+
+SecureVault versions 2 to 2.55.17.1
+	This is the original SecureVault product.
+	Installation requires 9 DLLs: BrandAuthorizationObjects, EM4Connect, BrandCardreaderObjects, BranddeviceInterface, BrandPaymentSchedulingObjects, BrandSpedObjects, EtsFPEInterface, EtsTraceLogger, and GLSNet	
+	BrandAuthorizationObjects contains 353 exposed methods and properties.
+	The user invokes methods and properties in BrandAuthorizationObjects to perform transactions.
+	Methods are executed asynchronously, response to the user is fired through an event. 
+	Transaction messages are sent in XML to/from SOMEBANK Processing Gateway.	
+	
+SecureVault version 2.55.18 to 2.55.19
+	This is a 'wrapper' for the old 2.55 interface that maps to the new SecureVault 3.0 interface.
+	Installation requires 2 DLLs: BrandAuthorizationObjects and SecureVault255Api
+	The SecureVault255Api dynamically loads the SecureVault255Core from the SOMEBANK CoreHandler.
+	The SecureVault255Core dynamically loads the SecureVault30Core from the SOMEBANK CoreHandler.
+	BrandAuthorizationObjects exposes the interface only, all functionality has been moved to the SecureVault255Core.
+	BrandAuthorizationObjects contains 353 exposed methods and properties.
+	The user invokes methods and properties in BrandAuthorizationObjects to perform transactions.
+	Methods are executed asynchronously, response to the user is fired through an event. 
+	BrandAuthorizationObjects invokes methods in SecureVault255Api.
+	The TransvaultApi invokes methods in the SecureVault255Core.
+	The SecureVault255Core transforms the data from the TV 2.55 format to the TV 3.0 format, and invokes methods in the SecureVault30Core.
+	The SecureVault30Core sends XML formatted messages to the SOMEBANK Processing Gateway.
+	The SecureVault255Api, SecureVault255Core, and SecureVault30Core send log messages to the SOMEBANK LogHandler.
+	
+SecureVault version 3.0.0.0
+	This is the new SecureVault 3.0 interface.
+	Installation requires 1 DLL: SecureVault30Api
+	The SecureVault30Api dynamically loads the SecureVaultCore from the SOMEBANK CoreHandler.
+	SecureVault30Api exposes the interface only, all functionality is in the SecureVault30Core.
+	SecureVault30Api contains 4 exposed methods: Get, Set, Send, and SendAsync
+	The user invokes methods in SecureVault30Api to perform transactions.
+	Methods Get, Set, and Send are executed synchronously, and return an integer.
+	The sendAsync method executes asynchronously, providing the response to the user by fired an event. 
+	The TransvaultApi invokes methods in the SecureVault30Core.
+	The SecureVault30Core sends XML formatted messages to the SOMEBANK Processing Gateway.
+	The SecureVault255Api, SecureVault255Core, and SecureVault30Core send log messages to the SOMEBANK LogHandler.
+
+	
+Request Message Data Objects:
+
+Action
+AccountDataSource
+AccountNumber
+ApprovalCode
+AVSStreet1
+AVSStreet2
+AVSZip
+CardType
+CashbackAmount
+CheckInDate
+CheckOutDate
+Child - Version identification of the Core ( SecureVault30Core or SecureVault255Core)
+ClientID
+ComponentVersion
+CoreType - The type of Core being requested (i.e. SecureVault30Core or SecureVault255Core)
+CustomData
+CustomerEMail
+CustomerPhoneNumber
+CVV
+DCCData
+DeliveryDate
+EncryptedDeviceData
+EncryptedPINData
+EncryptedTrack1Data
+EncryptedTrack2Data
+EncryptedTrack3Data
+EntryMethod
+ExpirationDate
+GratuityAmount
+LocalTransactionDate
+MasterKey
+MSRKeySerialNumber
+NameOnCard
+NoShowIndicator
+OperatorID
+Parent - Version identification of the Api ( SecureVault30Api or SecureVault255Api)
+PINPadSequenceNumber
+PurchaseIdentifier1
+PurchaseIdentifier2
+PurchaserEMail
+PurchaserName
+PurchaserNote
+PurchaserPhoneNumber
+ReferenceTransactionID
+ResendIndicator
+RoomRateAmount
+SettlementBatchAmount
+SignatureData
+StayDuration
+TaxAmount
+TerminalID
+TrackData
+TransactionAmount
+TransactionID
+VendorID
+VendorName
+VendorProduct
+VendorVersion
+
+Response Data Objects:
+
+AccountNumber
+ApprovalCode
+AuthorizationUrl
+AVSResultCode
+BadReadCount
+BatchID
+BatchNumber
+CaptureUrl
+CardCapability - Defines what a card can do
+CardType
+CashbackIncrementalAmount
+CashbackMaximumAmount
+CheckInDate_YYYYMMDD
+CheckOutDate_YYYYMMDD
+ComPortName
+CurrentBalance
+CustomerEMail
+CustomerPhoneNumber
+CustomerServicePhoneNumber
+CVVResultCode
+DailyRate
+DeliveryDate
+DisplayCancelledByUserMessages
+DisplayDeclinedMessages
+DisplayErrorMessages
+DisplayHoldCallMessages
+DisplaySuccessMessages
+EftUrl
+EnableCashback
+EnableCashbackEbt
+EnableDebitOrCreditCardSelection
+EnableEtsGui
+EnableGratuityCreditCards
+EnableGratuityDebitCards
+EnableGratuityGiftCards
+End - represents the End of a card range
+ErrorCode
+ErrorText
+ExpirationDate
+host - The host name of the GLS endpoint
+HostCommand - A list of command to execute pushed down from the Host
+ip - The IP address of the GLS endpoint
+IsSignatureRequired
+Iv - decryption  vector
+Key - This is the key required to decrypt Cores
+LedgerBalanceCashBenefits
+LedgerBalanceFoodStamps
+LocalTransactionDate
+LocalTransactionTime
+LogCommand - This represents a Host command to change the logging settings
+ManagementUrl
+ManualTerminalEntry
+MerchantCity
+MerchantEMail
+MerchantName
+MerchantNumber
+MerchantState
+MerchantStreet1
+MerchantStreet2
+MerchantZip
+MessageFromHost
+MsrModel
+name - Name of the GLS hive
+NameOnCard
+NoteToRecipient
+object - The target URL (i.e. main.asp)
+OperatorID
+PosCardCapability
+priority - Priority setting for the GLS hive
+protocol - The GLS protocol
+PurchaseIdentifier1
+PurchaseIdentifier2
+PurchaserEMail
+PurchaserName
+PurchaserPhoneNumber
+rc - Response Code
+region_code
+regions - represents the GLS regions (i.e. US, CA,�)
+ResponseCode
+ResponseText
+RetrievalReferenceNumber
+rt - Reponse Text
+SettlementSummary
+SignatureCaptureThresholdAmount
+Start - represents the Start of a card range
+SupportPhonePayment
+SurchargeAmount
+SurchargePercentage
+TargetUrlSource
+TaxAmount
+TaxPercentage
+TerminalCommunicationMethod
+TerminalID
+TerminalModel
+TerminalResponseTime
+TrackData
+TransactionID
+TransactionSequenceNumber
+TransactionStatus
+TransactionType
+SecureVaultIpAddress
+SecureVaultIpPort
+Type - represents the Card type
+type - The gateway type (i.e. Direct, GLS, Keys, Logging, Software, and Processing)
+update_frequency - Tier used to update GLS
+VerifiedAmount
+VoiceAuthorizationPhoneNumber
+		
+	

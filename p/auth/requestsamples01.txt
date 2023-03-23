@@ -1,0 +1,101 @@
+
+Tag: <AccountDataSource>
+Tag: <AccountNumber>
+Tag: <Action>
+Tag: <AVSStreet1>
+Tag: <AVSZip>
+Tag: <CardType>
+Tag: <CashbackAmount>
+Tag: <CheckInDate>
+Tag: <CheckOutDate>
+Tag: <ClientID>
+Tag: <ComponentVersion>
+Tag: <CVV>
+Tag: <DeviceId>
+Tag: <DeviceID>
+Tag: <EncryptedPINData>
+Tag: <EncryptedTrack1Data>
+Tag: <EncryptedTrack2Data>
+Tag: <EncryptedTrack3Data>
+Tag: <EntryMethod>
+Tag: <ExpirationDate>
+Tag: <GratuityAmount>
+Tag: <LogMessage>
+Tag: <MasterKey>
+Tag: <MSRKeySerialNumber>
+Tag: <NameOnCard>
+Tag: <OperatorId>
+Tag: <OperatorID>
+Tag: <PINPadSequenceNumber>
+Tag: <PurchaseIdentifier1>
+Tag: <PurchaseIdentifier2>
+Tag: <ReferenceTransactionID>
+Tag: <RequestMessage>
+Tag: <ResendIndicator>
+Tag: <RoomRateAmount>
+Tag: <SignatureData>
+Tag: <StayDuration>
+Tag: <TerminalID>
+Tag: <TrackData>
+Tag: <TransactionAmount>
+Tag: <TransactionID>
+Tag: <SecureVault>
+Tag: <SecureVaultApi>
+Tag: <SecureVaultCore>
+Tag: <VendorId>
+Tag: <VendorID>
+Tag: <VendorName>
+Tag: <VendorProduct>
+
+Message: <Action>ADD_GRATUITY,<ClientID>,<MasterKey>,<TerminalID>,<TransactionID>,<ReferenceTransactionID>,<GratuityAmount>,<VendorID>,<VendorName>,<VendorProduct>,<ComponentVersion>...Count: 7
+Message: <Action>ADD_GRATUITY,<ClientID>,<MasterKey>,<TerminalID>,<TransactionID>,<ReferenceTransactionID>,<GratuityAmount>,<VendorID>,<VendorProduct>,<ComponentVersion>...Count: 3
+Message: <Action>ADD_GRATUITY,<ClientID>,<MasterKey>,<TerminalID>,<TransactionID>,<TransactionAmount>,<GratuityAmount>...Count: 1
+Message: <Action>ADD_GRATUITY,<ClientID>,<MasterKey>,<VendorId>,<VendorName>,<VendorProduct>,<GratuityAmount>,<TransactionID>...Count: 1
+Message: <Action>ADJUST_TRANSACTION,<ClientID>,<MasterKey>,<TransactionAmount>,<TransactionID>,<CheckInDate>,<CheckOutDate>,<StayDuration>,<RoomRateAmount>...Count: 7
+Message: <Action>AUTHORIZE_ONLINE,<ClientID>,<MasterKey>,<EntryMethod>,<PurchaseIdentifier1>,<TransactionAmount>,<AccountNumber>,<ExpirationDate>,<NameOnCard>,<AVSStreet1>,<AVSZip>...Count: 415
+Message: <Action>AUTHORIZE_ONLINE,<ClientID>,<MasterKey>,<EntryMethod>,<PurchaseIdentifier1>,<TransactionAmount>,<AccountNumber>,<ExpirationDate>,<NameOnCard>,<AVSStreet1>,<AVSZip>,<CVV>...Count: 46
+Message: <Action>AUTHORIZE_ONLINE,<ClientID>,<MasterKey>,<EntryMethod>,<PurchaseIdentifier1>,<TransactionAmount>,<AccountNumber>,<ExpirationDate>,<NameOnCard>,<CheckInDate>,<CheckOutDate>,<StayDuration>,<RoomRateAmount>...Count: 28
+Message: <Action>AUTHORIZE_ONLINE,<ClientID>,<MasterKey>,<EntryMethod>,<TransactionID>,<TransactionAmount>,<AccountNumber>,<ExpirationDate>,<NameOnCard>,<AVSStreet1>,<AVSZip>,<PurchaseIdentifier1>,<OperatorID>,<VendorID>,<VendorName>,<VendorProduct>...Count: 364
+Message: <Action>AUTHORIZE_ONLINE,<ClientID>,<MasterKey>,<EntryMethod>,<TransactionID>,<TransactionAmount>,<AccountNumber>,<ExpirationDate>,<NameOnCard>,<AVSStreet1>,<PurchaseIdentifier1>,<OperatorID>,<VendorID>,<VendorName>,<VendorProduct>...Count: 2
+Message: <Action>AUTHORIZE_ONLINE,<ClientID>,<MasterKey>,<EntryMethod>,<TransactionID>,<TransactionAmount>,<PurchaseIdentifier1>,<OperatorID>,<VendorID>,<VendorName>,<VendorProduct>...Count: 136
+Message: <Action>AUTHORIZE_ONLINE,<ClientID>,<MasterKey>,<ResendIndicator>,<EntryMethod>,<PurchaseIdentifier1>,<PurchaseIdentifier2>,<TransactionAmount>,<EncryptedTrack1Data>,<EncryptedTrack2Data>,<MSRKeySerialNumber>,<AccountNumber>,<ExpirationDate>,<VendorId>,<VendorName>,<VendorProduct>,<NameOnCard>,<OperatorID>,<AVSStreet1>,<AVSZip>,<CVV>,<TransactionID>,<ReferenceTransactionID>,<TerminalID>,<DeviceId>...Count: 1
+Message: <Action>AUTHORIZE_ONLINE,<ClientID>,<MasterKey>,<ResendIndicator>,<EntryMethod>,<PurchaseIdentifier1>,<PurchaseIdentifier2>,<TransactionAmount>,<EncryptedTrack1Data>,<EncryptedTrack2Data>,<MSRKeySerialNumber>,<AccountNumber>,<ExpirationDate>,<VendorId>,<VendorName>,<VendorProduct>,<NameOnCard>,<OperatorID>,<AVSStreet1>,<AVSZip>,<CVV>,<TransactionID>,<ReferenceTransactionID>,<TerminalID>,<DeviceID>...Count: 1
+Message: <Action>AUTHORIZE_ONLINE,<ClientID>,<MasterKey>,<ResendIndicator>,<EntryMethod>,<PurchaseIdentifier1>,<PurchaseIdentifier2>,<TransactionAmount>,<EncryptedTrack1Data>,<EncryptedTrack2Data>,<MSRKeySerialNumber>,<AccountNumber>,<ExpirationDate>,<VendorId>,<VendorName>,<VendorProduct>,<NameOnCard>,<OperatorID>,<TransactionID>,<ReferenceTransactionID>,<TerminalID>,<DeviceId>...Count: 6
+Message: <Action>AUTHORIZE_ONLINE,<ClientID>,<MasterKey>,<TerminalID>,<EntryMethod>,<EncryptedTrack1Data>,<EncryptedTrack2Data>,<MSRKeySerialNumber>,<TransactionID>,<TransactionAmount>,<PurchaseIdentifier1>,<PurchaseIdentifier2>,<OperatorID>,<AccountDataSource>...Count: 8
+Message: <Action>AUTHORIZE_ONLINE,<ClientID>,<MasterKey>,<TerminalID>,<TransactionID>,<TransactionAmount>,<PurchaseIdentifier1>,<PurchaseIdentifier2>,<OperatorID>,<AccountNumber>,<AccountDataSource>,<ExpirationDate>,<EntryMethod>...Count: 7
+Message: <Action>AUTHORIZE_ONLINE,<ResendIndicator>,<ClientID>,<MasterKey>,<TerminalID>,<TransactionID>,<ReferenceTransactionID>,<PurchaseIdentifier1>,<OperatorID>,<TransactionAmount>,<EntryMethod>,<VendorID>,<VendorName>,<VendorProduct>,<ComponentVersion>,<EncryptedTrack1Data>,<EncryptedTrack2Data>,<MSRKeySerialNumber>...Count: 1
+Message: <Action>AUTHORIZE_ONLINE,<ResendIndicator>,<ClientID>,<MasterKey>,<TerminalID>,<TransactionID>,<ReferenceTransactionID>,<PurchaseIdentifier1>,<OperatorId>,<TransactionAmount>,<GratuityAmount>,<EntryMethod>,<VendorID>,<VendorName>,<VendorProduct>,<ComponentVersion>,<NameOnCard>,<AccountNumber>,<CardType>,<ExpirationDate>...Count: 17
+Message: <Action>AUTHORIZE_ONLINE,<ResendIndicator>,<ClientID>,<MasterKey>,<TerminalID>,<TransactionID>,<ReferenceTransactionID>,<PurchaseIdentifier1>,<OperatorId>,<TransactionAmount>,<GratuityAmount>,<EntryMethod>,<VendorID>,<VendorProduct>,<ComponentVersion>,<NameOnCard>,<AccountNumber>,<CardType>,<ExpirationDate>...Count: 3
+Message: <Action>AUTHORIZE_ONLINE,<ResendIndicator>,<ClientID>,<MasterKey>,<TerminalID>,<TransactionID>,<ReferenceTransactionID>,<PurchaseIdentifier1>,<OperatorId>,<TransactionAmount>,<GratuityAmount>,<EntryMethod>,<VendorID>,<VendorProduct>,<ComponentVersion>,<NameOnCard>,<AccountNumber>,<CardType>,<ExpirationDate>,<AVSStreet1>,<AVSZip>...Count: 5
+Message: <Action>AUTHORIZE_ONLINE,<ResendIndicator>,<ClientID>,<MasterKey>,<TerminalID>,<TransactionID>,<ReferenceTransactionID>,<PurchaseIdentifier1>,<TransactionAmount>,<GratuityAmount>,<EntryMethod>,<VendorID>,<VendorName>,<VendorProduct>,<ComponentVersion>,<EncryptedTrack1Data>,<EncryptedTrack2Data>,<MSRKeySerialNumber>...Count: 10
+Message: <Action>AUTHORIZE_ONLINE,<ResendIndicator>,<ClientID>,<MasterKey>,<TransactionID>,<ReferenceTransactionID>,<PurchaseIdentifier1>,<TransactionAmount>,<GratuityAmount>,<EntryMethod>,<VendorID>,<VendorName>,<VendorProduct>,<ComponentVersion>,<EncryptedTrack1Data>,<EncryptedTrack2Data>,<EncryptedTrack3Data>,<MSRKeySerialNumber>...Count: 11
+Message: <Action>AUTHORIZE_ONLINE,<ResendIndicator>,<ClientID>,<MasterKey>,<TransactionID>,<ReferenceTransactionID>,<PurchaseIdentifier1>,<TransactionAmount>,<GratuityAmount>,<EntryMethod>,<VendorID>,<VendorName>,<VendorProduct>,<ComponentVersion>,<EncryptedTrack1Data>,<EncryptedTrack2Data>,<MSRKeySerialNumber>...Count: 314
+Message: <Action>AUTHORIZE_ONLINE_DEBIT,<ClientID>,<MasterKey>,<TerminalID>,<EntryMethod>,<EncryptedTrack1Data>,<EncryptedTrack2Data>,<MSRKeySerialNumber>,<EncryptedPINData>,<PINPadSequenceNumber>,<TransactionID>,<TransactionAmount>,<PurchaseIdentifier1>,<PurchaseIdentifier2>,<OperatorID>,<AccountDataSource>,<CashbackAmount>...Count: 1
+Message: <Action>CREDIT_TRANSACTION,<ClientID>,<MasterKey>,<EntryMethod>,<PurchaseIdentifier1>,<TransactionAmount>,<AccountNumber>,<ExpirationDate>,<NameOnCard>,<AVSStreet1>,<AVSZip>...Count: 9
+Message: <Action>CREDIT_TRANSACTION,<ClientID>,<MasterKey>,<TerminalID>,<EntryMethod>,<TrackData>,<TransactionID>,<TransactionAmount>,<PurchaseIdentifier1>,<PurchaseIdentifier2>,<OperatorID>,<AccountDataSource>...Count: 1
+Message: <Action>CREDIT_TRANSACTION,<ClientID>,<MasterKey>,<TerminalID>,<TransactionID>,<TransactionAmount>,<PurchaseIdentifier1>,<PurchaseIdentifier2>,<OperatorID>,<AccountNumber>,<AccountDataSource>,<ExpirationDate>,<EntryMethod>...Count: 3
+Message: <Action>CREDIT_TRANSACTION,<ResendIndicator>,<ClientID>,<MasterKey>,<TerminalID>,<TransactionID>,<ReferenceTransactionID>,<PurchaseIdentifier1>,<OperatorId>,<TransactionAmount>,<VendorID>,<VendorName>,<VendorProduct>,<ComponentVersion>...Count: 20
+Message: <Action>CREDIT_TRANSACTION,<ResendIndicator>,<ClientID>,<MasterKey>,<TransactionID>,<ReferenceTransactionID>,<PurchaseIdentifier1>,<TransactionAmount>,<EntryMethod>,<VendorID>,<VendorName>,<VendorProduct>,<ComponentVersion>,<EncryptedTrack1Data>,<EncryptedTrack2Data>,<MSRKeySerialNumber>...Count: 1
+Message: <Action>FINALIZE_TRANSACTION,<ClientID>,<MasterKey>,<TerminalID>,<TransactionID>,<TransactionAmount>...Count: 2
+Message: <Action>FINALIZE_TRANSACTION,<ClientID>,<MasterKey>,<TransactionAmount>,<TransactionID>,<CheckInDate>,<CheckOutDate>,<StayDuration>,<RoomRateAmount>...Count: 8
+Message: <Action>GET_CORE,<ClientID>,<MasterKey>,<SecureVaultApi>,<SecureVault>...Count: 7
+Message: <Action>GET_CORE,<ClientID>,<MasterKey>,<SecureVaultApi>,<SecureVaultCore>...Count: 4
+Message: <Action>GET_CORE,<ClientID>,<MasterKey>,<SecureVaultApi>,<SecureVaultCore>,<SecureVault>...Count: 35
+Message: <Action>GET_KEYS,<ClientID>,<MasterKey>,<SecureVaultApi>,<SecureVaultCore>...Count: 4
+Message: <Action>GET_KEYS,<ClientID>,<MasterKey>,<SecureVaultApi>,<SecureVaultCore>,<SecureVault>...Count: 35
+Message: <Action>GET_MERCHANT_INFO,<ClientID>,<MasterKey>,<TerminalID>...Count: 85
+Message: <Action>GET_MERCHANT_INFO,<ClientID>,<MasterKey>,<TerminalID>,<SecureVaultCore>...Count: 3
+Message: <Action>GET_MERCHANT_INFO,<ClientID>,<MasterKey>,<TerminalID>,<VendorId>,<VendorName>,<VendorProduct>,<ComponentVersion>...Count: 11
+Message: <Action>GET_MERCHANT_INFO,<ClientID>,<MasterKey>,<TerminalID>,<VendorID>,<VendorName>,<VendorProduct>,<ComponentVersion>...Count: 205
+Message: <Action>GET_MERCHANT_INFO,<ClientID>,<MasterKey>,<TerminalID>,<VendorID>,<VendorProduct>,<ComponentVersion>...Count: 6
+Message: <Action>GET_MERCHANT_INFO,<ClientID>,<MasterKey>,<VendorId>,<VendorName>,<VendorProduct>...Count: 19
+Message: <Action>PREAUTHORIZE_ONLINE,<ClientID>,<MasterKey>,<TerminalID>,<TransactionID>,<TransactionAmount>,<PurchaseIdentifier1>,<PurchaseIdentifier2>,<OperatorID>,<AccountNumber>,<AccountDataSource>,<ExpirationDate>,<EntryMethod>...Count: 1
+Message: <Action>RETRIEVE_TRANSACTION,<ClientID>,<MasterKey>,<TransactionID>...Count: 19
+Message: <Action>RETRIEVE_TRANSACTION,<ClientID>,<MasterKey>,<TransactionID>,<CheckInDate>,<CheckOutDate>,<StayDuration>,<RoomRateAmount>...Count: 1
+Message: <Action>SEND_LOG,<ClientID>,<MasterKey>,<TerminalID>,<LogMessage>...Count: 856
+Message: <Action>SEND_LOG,<ClientID>,<MasterKey>,<SecureVaultApi>,<SecureVault>,<LogMessage>...Count: 400
+Message: <Action>SEND_LOG,<ClientID>,<MasterKey>,<SecureVaultApi>,<SecureVaultCore>,<LogMessage>...Count: 4
+Message: <Action>SEND_LOG,<ClientID>,<MasterKey>,<SecureVaultApi>,<SecureVaultCore>,<SecureVault>,<LogMessage>...Count: 245
+Message: <Action>SET_SIGNATURE_DATA,<ClientID>,<MasterKey>,<TerminalID>,<AccountDataSource>,<TransactionID>,<SignatureData>...Count: 5
+Message: <Action>SET_SIGNATURE_DATA,<ClientID>,<MasterKey>,<VendorId>,<VendorName>,<VendorProduct>,<TransactionID>,<SignatureData>...Count: 1
+Message: <Action>VOID_TRANSACTION,<ClientID>,<MasterKey>,<TransactionID>...Count: 24

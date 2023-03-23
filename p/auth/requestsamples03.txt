@@ -1,0 +1,118 @@
+SOMEBANK Host Components:
+
+ls1.networkgls.com - used to get the SOMEBANK endpoints (i.e. Processing, Software, Keys, Direct, Logging), returned as encrypted XML
+pos.somebank.com - the SOMEBANK Processing Gateway
+
+EtsCoreHandler - Manages a database with a table that contains the SecureVault255Core, and SecureVault30Core binaries, and a table containing the mapping of a specific binary to a ClientId/TerminalId.
+EtsDirectHandler - This web handler processes direct Host requests (i.e. POSitouch), and acts as a decision gateway to route direct processing transactions.
+EtsLogHandler - Receives and records log messages in a database.
+
+
+SecureVault versions 2 to 2.55.17.1
+	This is the original SecureVault product.
+	Installation requires 9 DLLs: BrandAuthorizationObjects, EM4Connect, EmaoneyCardreaderObjects, BranddeviceInterface, BrandPaymentSchedulingObjects, BrandSpedObjects, EtsFPEInterface, EtsTraceLogger, and GLSNet	
+	BrandAuthorizationObjects contains 353 exposed methods and properties.
+	The user invokes methods and properties in BrandAuthorizationObjects to perform transactions.
+	Methods are executed asynchronously, response to the user is fired through an event. 
+	Transaction messages are sent in XML to/from SOMEBANK Processing Gateway.	
+	
+SecureVault version 2.55.18 to 2.55.19
+	This is a 'wrapper' for the old 2.55 interface that maps to the new SecureVault 3.0 interface.
+	Installation requires 2 DLLs: BrandAuthorizationObjects and SecureVault255Api
+	The SecureVault255Api dynamically loads the SecureVault255Core from the SOMEBANK CoreHandler.
+	The SecureVault255Core dynamically loads the SecureVault30Core from the SOMEBANK CoreHandler.
+	BrandAuthorizationObjects exposes the interface only, all functionality has been moved to the SecureVault255Core.
+	BrandAuthorizationObjects contains 353 exposed methods and properties.
+	The user invokes methods and properties in BrandAuthorizationObjects to perform transactions.
+	Methods are executed asynchronously, response to the user is fired through an event. 
+	BrandAuthorizationObjects invokes methods in SecureVault255Api.
+	The TransvaultApi invokes methods in the SecureVault255Core.
+	The SecureVault255Core transforms the data from the TV 2.55 format to the TV 3.0 format, and invokes methods in the SecureVault30Core.
+	The SecureVault30Core sends XML formatted messages to the SOMEBANK Processing Gateway.
+	The SecureVault255Api, SecureVault255Core, and SecureVault30Core send log messages to the SOMEBANK LogHandler.
+	
+SecureVault version 3.0.0.0
+	This is the new SecureVault 3.0 interface.
+	Installation requires 1 DLL: SecureVault30Api
+	The SecureVault30Api dynamically loads the SecureVaultCore from the SOMEBANK CoreHandler.
+	SecureVault30Api exposes the interface only, all functionality is in the SecureVault30Core.
+	SecureVault30Api contains 4 exposed methods: Get, Set, Send, and SendAsync
+	The user invokes methods in SecureVault30Api to perform transactions.
+	Methods Get, Set, and Send are executed synchronously, and return an integer.
+	The sendAsync method executes asynchronously, providing the response to the user by fired an event. 
+	The TransvaultApi invokes methods in the SecureVault30Core.
+	The SecureVault30Core sends XML formatted messages to the SOMEBANK Processing Gateway.
+	The SecureVault255Api, SecureVault255Core, and SecureVault30Core send log messages to the SOMEBANK LogHandler.
+	
+Sample Purchase Request Message:
+	<RequestMessage>
+		<Action>AUTHORIZE_ONLINE</Action>
+		<ResendIndicator>0</ResendIndicator>
+		<ClientID>9999</ClientID>
+		<MasterKey>999999</MasterKey>
+		<TerminalID>999</TerminalID>
+		<TransactionID>3B6D7730-EA76-4036-BB1F-9B66180F1C3B</TransactionID>
+		<ReferenceTransactionID>3B6D7730-EA76-4036-BB1F-9B66180F1C3B</ReferenceTransactionID>
+		<PurchaseIdentifier1>98C6A118</PurchaseIdentifier1>
+		<PurchaseIdentifier2>61225A</PurchaseIdentifier2>
+		<OperatorID>32550BE3AC</OperatorID>
+		<TransactionAmount>55.99</TransactionAmount>
+		<GratuityAmount />
+		<EntryMethod>KEYED_CARD_PRESENT</EntryMethod>
+		<DCCData />
+		<VendorID>S34</VendorID>
+		<VendorName>ACME BOOK STORE</VendorName>
+		<VendorProduct>[TV 2.55.17]ACME .Net Point of Sale 1.0</VendorProduct>
+		<ComponentVersion>4.75.2.0</ComponentVersion>
+		<NameOnCard />
+		<AccountNumber>XXXXXXXXXXXX1111</AccountNumber>
+		<CardType>VISA</CardType>
+		<ExpirationDate>9999</ExpirationDate>
+		<AVSStreet1 />
+		<AVSStreet2 />
+		<AVSZip />
+		<CVV />
+		<SignatureData />
+		<CheckInDate />
+		<CheckOutDate />
+		<RoomRateAmount />
+		<StayDuration />
+		<NoShowIndicator />
+		<CustomData />
+	</RequestMessage>
+
+Sample Purchase Response:
+	<ResponseMessage>
+		<VerifiedAmount>0.00</VerifiedAmount>
+		<ApprovalCode/>
+		<ResponseCode>Z16</ResponseCode>
+		<ResponseText>ERROR -- Incorrect Master Key</ResponseText>
+		<ErrorCode/>
+		<ErrorText/>
+		<CVVResultCode/>
+		<AVSResultCode/>
+		<PurchaseIdentifier1>98C6A118</PurchaseIdentifier1>
+		<PurchaseIdentifier2>32550BE3AC</PurchaseIdentifier2>
+		<OperatorID>32550BE3AC</OperatorID>
+		<TransactionSequenceNumber>2665</TransactionSequenceNumber>
+		<TransactionID>3B6D7730-EA76-4036-BB1F-9B66180F1C3B</TransactionID>
+		<LocalTransactionDate/>
+		<LocalTransactionTime/>
+		<CustomerServicePhoneNumber>7756266000</CustomerServicePhoneNumber>
+		<VoiceAuthorizationPhoneNumber>8005255093</VoiceAuthorizationPhoneNumber>
+		<MerchantNumber>008000668122</MerchantNumber>
+		<TerminalIDNumber/>
+		<RetrievalReferenceNumber/>
+		<CardType>Visa</CardType>
+		<NameOnCard/>
+		<AccountNumber>XXXXXXXXXXXX1111</AccountNumber>
+		<ExpirationDate>1215</ExpirationDate>
+		<TaxAmount>0.00</TaxAmount>
+		<TaxPercentage>0.00</TaxPercentage>
+		<SurchargeAmount>0.00</SurchargeAmount>
+		<SurchargePercentage>0.00</SurchargePercentage>
+		<TransactionStatus/>
+		<MessageFromHost/>
+		<TransactionType>CreditCardTransaction</TransactionType>
+	</ResponseMessage>
+	
